@@ -1,5 +1,6 @@
 """Streamlit UI.  Run with:  streamlit run app.py"""
 import io
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -9,10 +10,21 @@ from PIL import Image
 import stego
 
 st.set_page_config(page_title="StegoVault", page_icon="🔐", layout="centered")
-st.title("🔐 StegoVault")
-st.caption("Data Hiding in Image Using Steganography - LSB + AES password protection")
+st.markdown(f"<style>{(Path(__file__).parent / 'style.css').read_text()}</style>",
+            unsafe_allow_html=True)
 
-tab_hide, tab_extract, tab_about = st.tabs(["Hide data", "Extract data", "About"])
+st.markdown("""
+<div class="hero">
+  <span class="badge">Minor Project-I · Vel Tech</span>
+  <h1>🔐 StegoVault</h1>
+  <p>Hide secret messages inside ordinary images. Invisible to the eye,
+     protected by AES-256 encryption.</p>
+  <div class="pills"><span>LSB Steganography</span><span>AES-256-GCM</span>
+     <span>PSNR Quality Check</span><span>100% Private</span></div>
+</div>
+""", unsafe_allow_html=True)
+
+tab_hide, tab_extract, tab_about = st.tabs(["🕵️ Hide data", "🔓 Extract data", "ℹ️ About"])
 
 # ---------------------------------------------------------------- HIDE
 with tab_hide:
@@ -82,6 +94,13 @@ with tab_extract:
 # --------------------------------------------------------------- ABOUT
 with tab_about:
     st.markdown("""
+<div class="steps">
+  <div class="step"><b>🖼️</b>Pick a cover image<br><small>PNG or BMP works best</small></div>
+  <div class="step"><b>✍️</b>Type secret + password<br><small>Encrypted with AES-256</small></div>
+  <div class="step"><b>📥</b>Download stego PNG<br><small>Looks identical to the original</small></div>
+</div>
+""", unsafe_allow_html=True)
+    st.markdown("""
 **How it works** - every message bit replaces the *least significant bit* of a pixel's
 R, G or B value, changing each colour by at most 1/255 (invisible to the eye).
 A header (magic bytes, flag, length) lets the extractor find the data.
@@ -89,3 +108,6 @@ With a password, the text is AES-256-GCM encrypted first (key from PBKDF2-SHA256
 
 **Always keep the stego image as PNG or BMP.** JPEG compression destroys hidden bits.
 """)
+
+st.markdown('<div class="foot">Department of Computer Science &amp; Engineering · '
+            'School of Computing · 10214CS601 Minor Project-I</div>', unsafe_allow_html=True)

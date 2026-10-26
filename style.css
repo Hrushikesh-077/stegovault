@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+html, body, [class*="st-"], .stApp { font-family: 'Poppins', sans-serif; }
+
+/* ---------- animated gradient background with grid + glows ---------- */
+.stApp {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,58,237,.35), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(6,182,212,.28), transparent 38%),
+    radial-gradient(circle at 50% 100%, rgba(236,72,153,.22), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0v48' fill='none' stroke='%23ffffff' stroke-opacity='.045'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #0b1020, #12183a, #1a1040);
+  background-attachment: fixed;
+  background-size: 140% 140%, 140% 140%, 140% 140%, 48px 48px, cover;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+@keyframes drift { from { background-position: 0% 0%, 100% 0%, 50% 100%, 0 0, 0 0; }
+                   to   { background-position: 20% 15%, 80% 20%, 40% 85%, 0 0, 0 0; } }
+[data-testid="stHeader"] { background: transparent; }
+.block-container { max-width: 880px; padding-top: 2rem; }
+
+/* ---------- hero ---------- */
+.hero { text-align:center; padding: 2.2rem 1rem 1.6rem; }
+.hero .badge { display:inline-block; padding:.3rem .9rem; border-radius:999px; font-size:.78rem;
+  letter-spacing:.08em; text-transform:uppercase; color:#c4b5fd;
+  background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.35); }
+.hero h1 { font-size:3rem; font-weight:700; margin:.6rem 0 .2rem;
+  background:linear-gradient(90deg,#a78bfa,#22d3ee,#f472b6); -webkit-background-clip:text;
+  background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { color:#aab3d6; max-width:600px; margin:0 auto; }
+.pills { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
+.pills span { font-size:.8rem; padding:.25rem .8rem; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); color:#dfe4ff; }
+
+/* ---------- glass panels ---------- */
+div[data-baseweb="tab-panel"] { background:rgba(255,255,255,.05); backdrop-filter: blur(14px);
+  border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:1.4rem 1.4rem 1rem;
+  box-shadow:0 10px 40px rgba(0,0,0,.35); margin-top:.8rem; }
+button[data-baseweb="tab"] { font-weight:600; font-size:1rem; }
+[data-testid="stFileUploaderDropzone"] { background:rgba(255,255,255,.04);
+  border:1.5px dashed rgba(167,139,250,.55); border-radius:14px; }
+textarea, input { background:rgba(8,12,30,.6) !important; border-radius:10px !important; }
+[data-testid="stMetric"] { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:14px; padding:.8rem 1rem; }
+[data-testid="stMetricValue"] { color:#22d3ee; }
+
+/* ---------- buttons ---------- */
+.stButton > button, .stDownloadButton > button { border:0; border-radius:12px; font-weight:600;
+  padding:.6rem 1.4rem; color:#fff; background:linear-gradient(90deg,#7c3aed,#06b6d4);
+  box-shadow:0 6px 20px rgba(124,58,237,.4); transition:transform .15s, box-shadow .15s; }
+.stButton > button:hover, .stDownloadButton > button:hover { transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(6,182,212,.45); color:#fff; }
+[data-testid="stImage"] img { border-radius:12px; border:1px solid rgba(255,255,255,.15); }
+
+/* ---------- about cards + footer ---------- */
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:.4rem 0 1rem; }
+.step { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:16px; padding:1rem; text-align:center; }
+.step b { display:block; font-size:1.6rem; } .step small { color:#aab3d6; }
+.foot { text-align:center; color:#7f89b3; font-size:.8rem; margin:2rem 0 .5rem; }
+@media (max-width:640px){ .steps{grid-template-columns:1fr;} .hero h1{font-size:2.2rem;} }
