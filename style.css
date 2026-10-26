@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-html, body, [class*="st-"], .stApp { font-family: 'Poppins', sans-serif; }
+html, body, .stApp, p, label, li, h1, h2, h3, h4, input, textarea, button, small,
+[data-testid="stMarkdownContainer"], [data-testid="stMetricLabel"], [data-testid="stMetricValue"]
+{ font-family: 'Poppins', sans-serif; }
+/* keep Streamlit's icon font so icons don't show as words like "upload" */
+[data-testid="stIconMaterial"], .material-symbols-rounded, .material-icons
+{ font-family: 'Material Symbols Rounded', 'Material Icons' !important; }
 
 /* ---------- animated gradient background with grid + glows ---------- */
 .stApp {
